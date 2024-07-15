@@ -1,0 +1,32 @@
+{% extends 'layouts/index.html' %} {% block title %} {{ title }} {% endblock %}
+{% block content %}
+
+<h1>{{ title }}</h1>
+
+<div class="info">
+  {% for trab in trabajador %}
+
+  <p>{{trab.name}} {{trab.last_name}}</p>
+  <p>{{trab.dni}}</p>
+  <p>{{trab.phone}}</p>
+  <p>{{trab.cargo}}</p>
+  <p>{{trab.contratista}}</p>
+  {% endfor %}
+
+  <hr />
+  <form action="">
+    {% for producto in productos %}
+    <select name="" id="">
+      {{producto.title}}
+    </select>
+    {% endfor %}
+  </form>
+  {% for producto in productos %}
+
+  <ul>
+    <li>{{producto.title}}</li>
+  </ul>
+
+  {% endfor %}
+</div>
+{% endblock %}
