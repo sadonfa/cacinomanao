@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/layout.css' %}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/tabla.css' %}"
+    />
+
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <p>Cacino Manao</p>
+      </div>
+
+      <div class="right">
+        <strong>Hola, usuario ...</strong>
+      </div>
+    </header>
+
+    <div class="lateral">
+      <ul>
+        <li><a href="{% url "home" %} ">Pedidos</a></li>
+        <li><a href="{% url "worker" %}">Trabajadores</a></li>
+        <li><a href="{% url "payments" %}">Historial de pagos</a></li>
+        <li><a href="{% url "categories" %}">Categorias</a></li>
+        <li><a href="{% url "products" %}">Productos</a></li>
+        <li><a href="{% url "users" %}">Usuarios</a></li>
+      </ul>
+    </div>
+    <div class="content">{% block content %} {% endblock %}</div>
+
+    <footer class="footer">creado por &copy; gegova.com.co</footer>
+  </body>
+</html>

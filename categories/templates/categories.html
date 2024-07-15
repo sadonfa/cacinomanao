@@ -1,0 +1,28 @@
+{% extends 'layouts/index.html' %} {% block title %} {{ title }} {% endblock %}
+{% block content %}
+
+<div class="hd-title">
+  <h1>{{ title }}</h1>
+  <div class="add"><a href="#">+</a></div>
+</div>
+
+<hr class="sep_title" />
+
+<table class="table">
+  <tr class="tb-title">
+    <td>id</td>
+    <td>Titulo</td>
+    <td>Imagen</td>
+  </tr>
+  {% for category in categori %}
+  <tr class="tb-content">
+    <td>{{category.id}}</td>
+    <td>{{category.title}}</td>
+    <td>{{category.image}}</td>
+    <td><a href="#">editar</a></td>
+    <td><a href="#">eliminar</a></td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
