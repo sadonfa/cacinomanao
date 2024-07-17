@@ -1,0 +1,31 @@
+.form-home {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  /* border: 1px solid red; */
+}
+
+.form-home label {
+  margin-bottom: 15px;
+  font-family: sans-serif;
+}
+
+.form-home input[type="text"] {
+  width: 65%;
+  /* margin-bottom: 15px; */
+  padding: 8px 6px;
+  border-radius: 5px;
+}
+
+.form-home input[type="submit"] {
+  width: 30%;
+}
+
+.form-home .busca-form {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid red; */
+}

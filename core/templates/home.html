@@ -1,12 +1,15 @@
 {% extends 'layouts/index.html' %} {% block title %} {{ title }} {% endblock %}
 {% block content %}
 
-<h1>{{ title }}</h1>
+{% comment %} <h1>{{ title }}</h1> {% endcomment %}
 
-<form action="{% url "buscar" %}">
-  <label for="">documento</label>
-  <input type="text" name="buscar" />
-  <input type="submit" value="buscar" />
+<form action="{% url "buscar" %}" class="form-home">
+  <label for="">Ingrese Documento</label>
+  <div class="busca-form">
+     <input type="text" name="buscar" />
+  <input type="submit" value="buscar" class="btn" />
+ 
+  </div>
 </form>
 
 
