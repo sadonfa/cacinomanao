@@ -5,4 +5,5 @@ from .models import Worker
 
 @admin.register(Worker)
 class TableAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('dni', 'name', 'last_name', 'contratista')
+    

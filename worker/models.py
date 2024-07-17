@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Worker(models.Model):
-    dni = models.CharField(max_length=100, verbose_name="dni")
+    dni = models.CharField(max_length=100, unique=True, verbose_name="dni")
     name = models.CharField(max_length=100, verbose_name="Nombre")
     last_name = models.CharField(max_length=150, verbose_name="Apellidos")
     phone = models.CharField(max_length=100, verbose_name="telefono")

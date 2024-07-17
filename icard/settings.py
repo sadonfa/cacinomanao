@@ -12,7 +12,15 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import datetime
 import os
+import environ
 from pathlib import Path
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +30,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b7fy(tp(-uci=@cs%r8*$_40hpxlf&2nyp^n19x86wi__j()+o'
+SECRET_KEY = env('SECRET_KEY')
+# SECRET_KEY = 'django-insecure-b7fy(tp(-uci=@cs%r8*$_40hpxlf&2nyp^n19x86wi__j()+o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env('DEBUG')
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -87,17 +97,17 @@ WSGI_APPLICATION = 'icard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'cacino_manaos',
+#         'NAME': 'casino_manaos',
 #         'USER': 'sadonfa',
 #         'PASSWORD': '1022353421',
 #         'HOST': 'localhost',
@@ -105,6 +115,16 @@ DATABASES = {
 #     }
 # }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env('MYSQL_NAME'),
+        'USER': env('MYSQL_USER'),
+        'PASSWORD': env('MYSQL_PASS'),
+        'HOST': env('MYSQL_HOST'),
+        'PORT': env('MYSQL_PORT'),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

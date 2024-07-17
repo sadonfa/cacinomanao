@@ -14,19 +14,26 @@
   {% endfor %}
 
   <hr />
-  <form action="">
-    {% for producto in productos %}
-    <select name="" id="">
-      {{producto.title}}
-    </select>
-    {% endfor %}
+  <form action="{% url "detail" %}" method="post" >
+    {% csrf_token %}
+
+    <div class="form-products">
+      {% for producto in productos %}
+    <article class="product">
+      <img src="{{producto.image.url}}" alt="{{producto.title}}">
+      <strong>{{producto.category}}</strong>
+      <h3>{{producto.title}} </h3>
+      <input type="hidden" name="{{producto.title}}">
+      <p> {{producto.price}} </p>
+      <input type="hidden" name="{{producto.price}}">
+      <input type="checkbox"  name="{{producto.id}}" />
+    </article>    
+    {% endfor %} 
+    </div>
+   
+    <br />
+    <input type="submit" value="Comprar" />
   </form>
-  {% for producto in productos %}
-
-  <ul>
-    <li>{{producto.title}}</li>
-  </ul>
-
-  {% endfor %}
+  
 </div>
 {% endblock %}
