@@ -1,12 +1,12 @@
 {% extends 'layouts/index.html' %} {% block title %} {{ title }} {% endblock %}
-{% block content %}
+{% load humanize %} {% block content %}
 
 <h1>{{ title }}</h1>
 <ul>
-  {% for dato in datos %}
-
-  <li>{{ dato }}</li>
-
-  {% endfor %}
+  {% for producto in productos %} {% for prod in producto %}
+  <li>{{ prod.title }} -- $ {{ prod.price|intcomma }} COP</li>
+  {% endfor %} {% comment %}
+  <li>{{prod}}</li>
+  {% endcomment %} {% endfor %}
 </ul>
 {% endblock %}

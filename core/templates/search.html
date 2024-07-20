@@ -1,4 +1,6 @@
-{% extends 'layouts/index.html' %} {% block title %} {{ title }} {% endblock %}
+{% extends 'layouts/index.html' %}
+{% load humanize %}
+{% block title %} {{ title }} {% endblock %}
 {% block content %}
 
 <h1>{{ title }}</h1>
@@ -20,19 +22,16 @@
     <div class="form-products">
       {% for producto in productos %}
     <article class="product">
-      <img src="{{producto.image.url}}" alt="{{producto.title}}">
       <strong>{{producto.category}}</strong>
       <h3>{{producto.title}} </h3>
-      <input type="hidden" name="{{producto.title}}">
-      <p> {{producto.price}} </p>
-      <input type="hidden" name="{{producto.price}}">
-      <input type="checkbox"  name="{{producto.id}}" />
+      <p>$ {{producto.price|intcomma }} COP</p>
+      <input type="checkbox"  name="prod_id" value="{{producto.id}}" />
     </article>    
     {% endfor %} 
     </div>
    
     <br />
-    <input type="submit" value="Comprar" />
+    <input type="submit" value="Comprar" class="btn" />
   </form>
   
 </div>

@@ -21,22 +21,22 @@ def search(request):
 
 
     return render(request, "search.html",{
-        'title': 'Buscador',
+        'title': 'Generar Pedido',
         'trabajador': t,
         'productos': productos
     })
 
 def detail(request):
- 
+
     if request.method == "POST":
-        datos = request.POST
-        
-        if datos == "selec":
-            print(len(datos))
-            print(datos)
+        p = request.POST.getlist('prod_id')
+
+        producto = []
+        for  element in p:
+            producto.append(Product.objects.filter(id=element))
 
     return render(request, "detalles.html", {
         'title': 'Detalles de pedido',
-        'datos': datos
+        'productos': producto
     } )
     
