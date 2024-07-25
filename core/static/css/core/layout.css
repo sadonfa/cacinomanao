@@ -18,6 +18,15 @@ body {
   grid-auto-rows: minmax(53px, auto);
 }
 
+h1 {
+  font-family: sans-serif;
+  font-size: 25px;
+  color: black;
+  text-transform: uppercase;
+  border-bottom: 2px solid #222;
+  padding-bottom: 5px;
+}
+
 .header {
   /* grid-area: header; */
   grid-column: 1 / 5;

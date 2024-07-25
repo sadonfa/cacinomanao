@@ -1,0 +1,18 @@
+{% extends 'layouts/index.html' %} {% load humanize %} {% block title %} {{
+title }} {% endblock %} {% block content %}
+<h1>{{ title }}</h1>
+
+{% for trab in trabajador %}
+<ul>
+  <li>{{trab.dni}}</li>
+  <li>{{trab.name}}</li>
+  <li>{{trab.last_name}}</li>
+  <li>{{trab.phone}}</li>
+  <li>{{trab.cargo}}</li>
+  <li>{{trab.contratista}}</li>
+</ul>
+
+{% endfor %}
+<hr />
+
+{% endblock %}

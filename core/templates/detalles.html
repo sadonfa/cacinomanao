@@ -1,12 +1,50 @@
 {% extends 'layouts/index.html' %} {% block title %} {{ title }} {% endblock %}
 {% load humanize %} {% block content %}
+<div class="detalles">
+  <h1>{{ title }}</h1>
 
-<h1>{{ title }}</h1>
-<ul>
-  {% for producto in productos %} {% for prod in producto %}
-  <li>{{ prod.title }} -- $ {{ prod.price|intcomma }} COP</li>
-  {% endfor %} {% comment %}
-  <li>{{prod}}</li>
-  {% endcomment %} {% endfor %}
-</ul>
+  {% for trab in trabajador %}
+  <ul>
+    <li>{{trab.dni}}</li>
+    <li>{{trab.name}} {{trab.last_name}}</li>
+    <li>{{trab.phone}}</li>
+    <li>{{trab.cargo}}</li>
+    <li>{{trab.contratista}}</li>
+  </ul>
+<form action="{% url "pagar" %}" method="post">
+    {% csrf_token %}
+<input type="hidden" name="trabajador" value="{{trab.id}}">
+  {% endfor %}
+  
+    <table class="table">
+      <tr class="tb-title">
+        <td>id</td>
+        <td>producto</td>
+        <td>cantidad</td>
+        <td>valor</td>
+      </tr>
+
+      {% for producto in productos %} {% for prod in producto %}
+      <tr>
+        <td>{{prod.id}}</td>
+        <td>{{ prod.title }}</td>
+        <td></td>
+        <td>$ {{ prod.price|intcomma }} COP</td>
+
+        <input type="hidden" name="nombre" value="{{prod.title}}" />
+        <input type="hidden" name="price" value="{{prod.price}}" />
+      </tr>
+      {% endfor %} {% endfor %}
+      <tr>
+        <td colspan="3">TOTAL</td>
+        <td>$ {{total|intcomma}} COP </td>
+        <input type="hidden" name="total" value="{{total}}">
+      </tr>
+    </table>
+
+    {% comment %} <input type="submit" value="modificar" class="btn" /> {% endcomment %}
+    <input type="submit" value="Pagar" class="btn" />
+  </form>
+</div>
+
 {% endblock %}

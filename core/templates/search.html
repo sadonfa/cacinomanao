@@ -3,21 +3,32 @@
 {% block title %} {{ title }} {% endblock %}
 {% block content %}
 
-<h1>{{ title }}</h1>
+
 
 <div class="info">
+  <h1>{{ title }}</h1>
+
   {% for trab in trabajador %}
+<ul>
+  <li>{{trab.name}} {{trab.last_name}}</li>
+  <li>{{trab.dni}}</li>
+  <li>{{trab.phone}}</li>
+  <li>{{trab.cargo}}</li>
+  <li>{{trab.contratista}}</li>
+</ul>
+  
 
-  <p>{{trab.name}} {{trab.last_name}}</p>
-  <p>{{trab.dni}}</p>
-  <p>{{trab.phone}}</p>
-  <p>{{trab.cargo}}</p>
-  <p>{{trab.contratista}}</p>
-  {% endfor %}
-
-  <hr />
+  
+</div>
   <form action="{% url "detail" %}" method="post" >
     {% csrf_token %}
+<input type="hidden" name="trabajador" value="{{trab.id}}">
+
+ 
+  {% endfor %}
+
+
+
 
     <div class="form-products">
       {% for producto in productos %}
@@ -34,5 +45,5 @@
     <input type="submit" value="Comprar" class="btn" />
   </form>
   
-</div>
+
 {% endblock %}
